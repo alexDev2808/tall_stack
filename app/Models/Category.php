@@ -9,6 +9,11 @@ class Category extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'family_id'
+    ];
+
     // Relacion uno a muchos inversa
     public function family() {
         return $this->belongsTo(Family::class);
