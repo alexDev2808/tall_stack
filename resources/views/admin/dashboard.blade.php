@@ -17,7 +17,7 @@
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
                         <button class="text-sm hover:text-blue-600">
-                            {{ __('Cerrar sesión') }}
+                            {{ __('Logout') }}
                         </button>
                     </form>
 
