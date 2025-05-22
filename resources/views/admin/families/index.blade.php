@@ -35,9 +35,7 @@
                         <th scope="col" class="px-6 py-3">
                             Name
                         </th>
-                        <th scope="col" class="px-6 py-3">
-                            
-                        </th>
+                        <th scope="col" class="px-6 py-3"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,9 +48,11 @@
                             <td class="px-6 py-4">
                                 {{ $family->name }}
                             </td>
-                            <td class="px-6 py-4">
-                                <a href="{{ route('admin.families.edit', $family)}}">Editar</a>
+                            <td class="flex justify-end gap-2 py-4">
+                                <a class="btn btn-yellow" href="{{ route('admin.families.edit', $family)}}">Editar</a>
+                                {{-- <a class="btn btn-red" href="{{ route('admin.families.destroy', $family)}}">Eliminar</a> --}}
                             </td>
+                           
                         </tr>
                         
                     @endforeach

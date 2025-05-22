@@ -42,7 +42,7 @@ class FamilyController extends Controller
         return redirect()->route('admin.families.index')
             ->with([
                 'flash.banner' => 'Familia creada con exito!', 
-                'flash.bannerStyle' => 'warning'
+                'flash.bannerStyle' => 'success'
             ]);
     }
 
@@ -59,7 +59,7 @@ class FamilyController extends Controller
      */
     public function edit(Family $family)
     {
-        //
+        return view('admin.families.edit', compact('family'));
     }
 
     /**
@@ -67,7 +67,17 @@ class FamilyController extends Controller
      */
     public function update(Request $request, Family $family)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:100'
+        ]);
+
+        $family->update($request->all());
+
+        return redirect()->route('admin.families.edit', $family)
+            ->with([
+                'flash.banner' => 'Familia actualizada con exito!',
+                'flash.bannerStyle' => 'warning'
+            ]);
     }
 
     /**
@@ -75,6 +85,12 @@ class FamilyController extends Controller
      */
     public function destroy(Family $family)
     {
-        //
+        $family->delete();
+
+        return redirect()->route('admin.families.index')
+            ->with([
+                'flash.banner' => 'Familia eliminada con exito!',
+                'flash.bannerStyle' => 'warning'
+            ]);
     }
 }
