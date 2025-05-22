@@ -1,11 +1,17 @@
 @php
     $links = [
         [
-            'icon' => 'fa-solid fa-house',
             'name' => 'Dashboard',
+            'icon' => 'fa-solid fa-house',
             'route' => route('admin.dashboard'),
             'active' => request()->routeIs('admin.dashboard'),
-        ]
+        ],
+        [
+            'name' => 'Familias',
+            'icon' => 'fa-solid fa-box-open',
+            'route' => route('admin.families.index'),
+            'active' => request()->routeIs('admin.families.*'),
+        ],
 
     ];
 @endphp    
@@ -24,11 +30,13 @@
                     
                     <li>
                         <a href="{{ $link['route'] }}"
-                            class="flex items-center p-2 text-white rounded-lg hover:bg-blue-800 dark:hover:bg-blue-800 group"
-                            :class="{ 'bg-blue-700': {{ $link['active'] }} }"
+                            class="flex items-center p-2 text-gray-600 rounded-lg bg-gray-100 hover:bg-gray-300 dark:hover:bg-blue-800 group"
+                            :class="{ '!bg-blue-600 hover:!bg-blue-600 text-white': {{ $link['active'] }} }"
                             >
                             <span class="inline-flex w-6 h-6 justify-center items-center">
-                                <i class="{{ $link['icon'] }} text-white "></i>
+                                <i 
+                                    :class="{''}"
+                                    class="{{ $link['icon'] }} "></i>
                             </span>
                             <span class="ms-2">{{ $link['name'] }}</span>
                         </a>
