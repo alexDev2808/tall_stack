@@ -7,7 +7,7 @@
                     class="text-sm leading-normal text-slate-700 ">
 
                     @isset($breadcrumb['route'])   
-                        <a class="opacity-50" href="">{{ $breadcrumb['name']}}</a>
+                        <a class="opacity-50" href="{{ $breadcrumb['route']}}">{{ $breadcrumb['name']}}</a>
                     @else
                         {{ $breadcrumb['name'] }}    
                     @endisset

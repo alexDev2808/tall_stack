@@ -8,6 +8,12 @@
     ],
 ]">
 
+    <x-slot name="action">
+        <a href="{{ route('admin.families.create')}}" class="btn btn-blue">
+            Nuevo
+        </a>
+    </x-slot>
+
     @if (count($families) == 0)
 
         <div class="p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400" role="alert">
@@ -26,9 +32,6 @@
                             Name
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Price
-                        </th>
-                        <th scope="col" class="px-6 py-3">
                             
                         </th>
                     </tr>
@@ -42,9 +45,6 @@
                             </th>
                             <td class="px-6 py-4">
                                 {{ $family->name }}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{ $family->price }}
                             </td>
                             <td class="px-6 py-4">
                                 <a href="{{ route('admin.families.edit', $family)}}">Editar</a>
