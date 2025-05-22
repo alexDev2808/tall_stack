@@ -35,7 +35,15 @@ class FamilyController extends Controller
         ]);
 
         Family::create($request->all());
-        return redirect()->route('admin.families.index')->with('success', 'Family created successfully.');
+
+        // session(['flash.banner' => 'Familia creada exitosamente.']);
+        // session(['flash.bannerStyle' => 'success']);
+
+        return redirect()->route('admin.families.index')
+            ->with([
+                'flash.banner' => 'Familia creada con exito!', 
+                'flash.bannerStyle' => 'warning'
+            ]);
     }
 
     /**

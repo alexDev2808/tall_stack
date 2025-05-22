@@ -8,6 +8,10 @@
     ],
 ]">
 
+    <div x-data="{ show: true }" x-init="setTimeout(() => { show = false }, 4000)" x-show="show">
+        <x-banner />
+    </div>
+
     <x-slot name="action">
         <a href="{{ route('admin.families.create')}}" class="btn btn-blue">
             Nuevo
