@@ -1,16 +1,35 @@
 @props(['style' => session('flash.bannerStyle', 'success'), 'message' => session('flash.banner')])
 
-<div x-data="{{ json_encode(['show' => true, 'style' => $style, 'message' => $message]) }}"
-    class="rounded-lg mb-2 border"
+<div 
+    x-data="{ show: false, style: '{{ $style }}', message: '{{ $message }}' }"
+    x-init="
+        if (message) { 
+            setTimeout(() => { 
+                show = true 
+                setTimeout(() => { show = false }, 3000) 
+            }, 50);
+        }
+    "
+    class="rounded-lg mb-2 border fixed top-6 right-6 z-50 w-4/5 sm:w:full max-w-md shadow-lg"
     :class="{ 'bg-green-100 text-green-800 border-green-500': style == 'success', 'bg-red-100 text-red-800': style == 'danger', 'bg-yellow-100 text-yellow-700': style == 'warning', 'bg-gray-500': style != 'success' && style != 'danger' && style != 'warning'}"
-            style="display: none;"
-            x-show="show && message"
-            x-on:banner-message.window="
-                style = event.detail.style;
-                message = event.detail.message;
-                show = true;
-            ">
-    <div class="max-w-screen-lg mx-auto py-2 px-3 sm:px-6 lg:px-8">
+    x-show="show && message"
+    x-transition:enter="transition transform duration-500"
+    x-transition:enter-start="opacity-0 translate-x-full"
+    x-transition:enter-end="opacity-100 translate-x-0"
+    x-transition:leave="transition transform duration-500"
+    x-transition:leave-start="opacity-100 translate-x-0"
+    x-transition:leave-end="opacity-0 translate-x-full"
+    x-on:banner-message.window="
+        style = event.detail.style;
+        message = event.detail.message;
+        show = true;
+        setTimeout(() => { 
+            show = true 
+            setTimeout(() => { show = false }, 3000) 
+        }, 50);
+    "
+>
+    <div class="py-2 px-3 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between flex-wrap">
             <div class="w-0 flex-1 flex items-center min-w-0">
                 <span class="flex p-2 rounded-lg" :class="{ 'bg-green-600': style == 'success', 'bg-red-600': style == 'danger', 'bg-yellow-600': style == 'warning' }">

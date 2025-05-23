@@ -12,9 +12,9 @@
     ],
 ]">
 
-    <div x-data="{ show: true }" x-init="setTimeout(() => { show = false }, 3000)" x-show="show">
-        <x-banner />
-    </div>
+
+    <x-banner />
+
 
     <div class="card">
         <form action="{{ route('admin.families.update', $family) }}" method="POST" novalidate>
