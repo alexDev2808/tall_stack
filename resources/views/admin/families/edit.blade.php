@@ -9,7 +9,7 @@
     ],
     [
         'name' => 'Editar',
-    ]
+    ],
 ]">
 
     <div x-data="{ show: true }" x-init="setTimeout(() => { show = false }, 3000)" x-show="show">
@@ -22,12 +22,8 @@
             @method('PATCH')
             <div>
                 <x-label class="mb-2">Nombre</x-label>
-                <x-input 
-                    name="name" 
-                    type="text"
-                    value="{{ old('name', $family->name) }}"
-                    placeholder="Nombre de la familia"
-                    :error="$errors->has('name')" />
+                <x-input name="name" type="text" value="{{ old('name', $family->name) }}"
+                    placeholder="Nombre de la familia" :error="$errors->has('name')" />
 
                 @error('name')
                     <p class="text-red-500 text-xs italic mt-1">{{ $message }}</p>
@@ -41,19 +37,31 @@
         </form>
     </div>
 
-    <form 
-        id="delete-form"
-        action="{{ route('admin.families.destroy', $family)}}" 
-        method="POST">
+    <form id="delete-form" action="{{ route('admin.families.destroy', $family) }}" method="POST">
         @csrf
         @method('DELETE')
-        
+
     </form>
 
     @push('js')
         <script>
             function confirmDelete() {
-                document.getElementById('delete-form').submit();
+
+                Swal.fire({
+                    title: "Confirmas la eliminacion?",
+                    text: "No podras revertir esto!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#d33",
+                    cancelButtonColor: "#2563eb",
+
+                    confirmButtonText: "Si, eliminar!",
+                    cancelButtonText: "Cancelar"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById('delete-form').submit();
+                    }
+                });
             }
         </script>
     @endpush

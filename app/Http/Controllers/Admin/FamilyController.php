@@ -83,8 +83,23 @@ class FamilyController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Family $family)
+    public function destroy(Family $family, Request $request)
     {
+
+        if($family->categories()->count() > 0){
+            session()->flash('swal', [
+                'icon' => 'error',
+                'title' => 'Ups...',
+                'text' => 'No se puede eliminar la familia porque tiene categorias asociadas.'
+            ]);
+
+            if($request['current_page'] === 'index'){
+                return redirect()->route('admin.families.index');
+            }
+
+            return redirect()->route('admin.families.edit', $family);
+        }
+
         $family->delete();
 
         return redirect()->route('admin.families.index')
@@ -92,5 +107,6 @@ class FamilyController extends Controller
                 'flash.banner' => 'Familia eliminada con exito!',
                 'flash.bannerStyle' => 'warning'
             ]);
+            
     }
 }
