@@ -18,6 +18,12 @@
             'route' => route('admin.subsidiaries.index'),
             'active' => request()->routeIs('admin.subsidiaries.*'),
         ],
+        [
+            'name' => 'Areas',
+            'icon' => 'fa-solid fa-city',
+            'route' => route('admin.areas.index'),
+            'active' => request()->routeIs('admin.areas.*'),
+        ],
     ];
 @endphp    
     
