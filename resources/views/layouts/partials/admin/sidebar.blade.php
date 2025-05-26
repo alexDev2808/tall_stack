@@ -12,7 +12,12 @@
             'route' => route('admin.families.index'),
             'active' => request()->routeIs('admin.families.*'),
         ],
-
+        [
+            'name' => 'Filiales',
+            'icon' => 'fa-solid fa-globe',
+            'route' => route('admin.subsidiaries.index'),
+            'active' => request()->routeIs('admin.subsidiaries.*'),
+        ],
     ];
 @endphp    
     
