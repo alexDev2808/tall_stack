@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AreaController;
 use App\Http\Controllers\Admin\FamilyController;
+use App\Http\Controllers\Admin\SubareaController;
 use App\Http\Controllers\Admin\SubsidiaryController;
 use Illuminate\Support\Facades\Route;
 
@@ -12,3 +13,4 @@ Route::get('/', function () {
 Route::resource('families', FamilyController::class);
 Route::resource('subsidiaries', SubsidiaryController::class);
 Route::resource('areas', AreaController::class);
+Route::resource('subareas', SubareaController::class);

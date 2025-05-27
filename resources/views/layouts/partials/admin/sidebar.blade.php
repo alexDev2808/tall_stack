@@ -24,6 +24,12 @@
             'route' => route('admin.areas.index'),
             'active' => request()->routeIs('admin.areas.*'),
         ],
+        [
+            'name' => 'Subareas',
+            'icon' => 'fa-solid fa-network-wired',
+            'route' => route('admin.subareas.index'),
+            'active' => request()->routeIs('admin.subareas.*'),
+        ],
     ];
 @endphp    
     
