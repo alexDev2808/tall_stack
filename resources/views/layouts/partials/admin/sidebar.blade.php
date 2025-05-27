@@ -30,6 +30,12 @@
             'route' => route('admin.subareas.index'),
             'active' => request()->routeIs('admin.subareas.*'),
         ],
+        [
+            'name' => 'Departamentos',
+            'icon' => 'fa-solid fa-layer-group',
+            'route' => route('admin.departaments.index'),
+            'active' => request()->routeIs('admin.departaments.*'),
+        ],
     ];
 @endphp    
     

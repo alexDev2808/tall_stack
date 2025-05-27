@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AreaController;
+use App\Http\Controllers\Admin\DepartamentController;
 use App\Http\Controllers\Admin\FamilyController;
 use App\Http\Controllers\Admin\SubareaController;
 use App\Http\Controllers\Admin\SubsidiaryController;
@@ -14,3 +15,4 @@ Route::resource('families', FamilyController::class);
 Route::resource('subsidiaries', SubsidiaryController::class);
 Route::resource('areas', AreaController::class);
 Route::resource('subareas', SubareaController::class);
+Route::resource('departaments', DepartamentController::class);

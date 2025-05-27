@@ -13,8 +13,13 @@ class Departament extends Model
     ];
 
 
-    public function subareas()
+    public function subarea()
     {
-        return $this->hasMany(Subarea::class);
+        return $this->belongsTo(Subarea::class);
+    }
+
+    public function users() 
+    {
+        return $this->hasMany(User::class);
     }
 }
